@@ -14,9 +14,22 @@ public class ObstacleSpawner : MonoBehaviour
 
     public List<GameObject> activeObstacles;
 
+    [SerializeField] private GameObject stageStart;
+ 
+
+    private Transform lastLavelPartTransform;
+    private void Start()
+    {
+
+        StartSpawn();
+    }
     private void Update()
     {
-        SpawnLoop();
+        if(GameManager.Instance.isPlaying)
+        {
+            SpawnLoop();
+        }
+        
     }
 
     private void SpawnLoop()
@@ -30,7 +43,18 @@ public class ObstacleSpawner : MonoBehaviour
             timeUntilObstacleSpawn = 0f;
         }
     }
-
+    private void StartSpawn()
+    {
+        if(stageStart != null)
+        {
+            Rigidbody2D obstacleRB = stageStart.GetComponent<Rigidbody2D>();
+            //obstacleRB.velocity = new Vector2(-1 * obstacleSpeed, 0); long form
+            obstacleRB.velocity = Vector2.left * obstacleSpeed;
+            activeObstacles.Add(stageStart);
+        }
+        
+        
+    }
     private void Spawn()
     {
         GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];

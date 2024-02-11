@@ -10,6 +10,7 @@ public class PlayerCollisions : MonoBehaviour
         if (other.transform.tag == "Obstacle")
         {
             gameObject.SetActive(false);
+            GameManager.Instance.GameOver();
             //TODO connect this to Game Manager and trigger GameOver
         }
     }
