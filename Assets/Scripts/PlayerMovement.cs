@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private ObstacleSpawner obstacleSpawner;
     [SerializeField] private Animator animator;
+    [SerializeField] private PlayerShoot playerShootComp;
 
     public bool isDucking = false;
 
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private float jumpTimer;
 
     private bool isDoubleJump = false;
+
+    
 
     private void Update()
     {
@@ -41,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRigidbody.velocity = Vector2.up * jumpForce;
             isJumping = true;
-            Debug.Log(isGrounded);
             animator.SetBool("isJumping", true);
         }
 
@@ -73,6 +75,13 @@ public class PlayerMovement : MonoBehaviour
         {
             obstacleSpawner.ResumeObstacles();
         }
+
+        if (Input.GetButtonUp("Fire1") && isGrounded == true)
+        {
+            playerShootComp.Shoot();
+        }
     }
+
+    
 
 }

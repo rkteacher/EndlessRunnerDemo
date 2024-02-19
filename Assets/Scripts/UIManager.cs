@@ -7,6 +7,7 @@ using System;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreDisplay;
+    [SerializeField] private TextMeshProUGUI ammoDisplay;
 
     GameManager gameManager;
     private void Start()
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
 
     private void OnGUI()
     {
-        scoreDisplay.text = ("score ") + gameManager.ScoreDisplay();
+        scoreDisplay.text = gameManager.ScoreDisplay();
+        ammoDisplay.text = gameManager.currentAmmo.ToString();
     }
 }

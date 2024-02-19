@@ -20,4 +20,15 @@ public class Enemy_Cactee : MonoBehaviour
         enemyRB.velocity = Vector2.left * speed;
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.tag == "Bullet")
+        {
+            gameObject.SetActive(false);
+            Destroy(other.gameObject);
+            GameManager.Instance.EnemyDefeated();
+            Debug.Log("catee got shot");
+
+        }
+    }
 }

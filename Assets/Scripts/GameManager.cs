@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+
+    
+    public int maxAmmo = 6;
+    public int currentAmmo = 3;
+    
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -28,6 +34,7 @@ public class GameManager : MonoBehaviour
         return Mathf.RoundToInt(currentScore).ToString();
     }
 
+    
     public void GameOver()
     {
         currentScore = 0;
@@ -51,4 +58,11 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void EnemyDefeated()
+    {
+        currentScore += 50;
+    }
+
+    
 }

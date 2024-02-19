@@ -13,6 +13,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float timeUntilObstacleSpawn;
 
     public List<GameObject> activeObstacles;
+    private bool isDucking;
 
     [SerializeField] private GameObject stageStart;
  
@@ -25,7 +26,7 @@ public class ObstacleSpawner : MonoBehaviour
     }
     private void Update()
     {
-        if(GameManager.Instance.isPlaying)
+        if(GameManager.Instance.isPlaying && !isDucking)
         {
             SpawnLoop();
         }
@@ -75,6 +76,7 @@ public class ObstacleSpawner : MonoBehaviour
             Rigidbody2D obstacleRB = obstacle.GetComponent<Rigidbody2D>();
             obstacleRB.velocity = Vector2.left * 0f;
         }
+        isDucking = true;
     }
 
     public void ResumeObstacles()
@@ -84,6 +86,7 @@ public class ObstacleSpawner : MonoBehaviour
             Rigidbody2D obstacleRB = obstacle.GetComponent<Rigidbody2D>();
             obstacleRB.velocity = Vector2.left * obstacleSpeed;
         }
+        isDucking = false;
     }
 
 }
