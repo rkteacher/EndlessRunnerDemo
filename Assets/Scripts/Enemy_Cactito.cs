@@ -75,8 +75,6 @@ public class Enemy_Cactito : MonoBehaviour
         cactitoAnimator.SetBool("isShooting", false);
 
     }
-
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.tag == "Bullet")

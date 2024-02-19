@@ -12,6 +12,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Start()
     {
+        // Sets the GameManager when the games starts. Now it has a reference and can talk with the Singlton Game Manager.
         gameManager = GameManager.Instance;
     }
 
