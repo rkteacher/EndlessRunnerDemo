@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     // This #region creates a organized section of the code that can be collapsed
     public static GameManager Instance;
 
+    [SerializeField] private UIManager uiManager;
 
     
     public int maxAmmo = 6;
@@ -40,8 +41,15 @@ public class GameManager : MonoBehaviour
     
     public void GameOver()
     {
-        currentScore = 0;
+        uiManager.GameOver();
         isPlaying = false;
+    }
+
+    public void GameStart()
+    {
+        uiManager.StartGame();
+        currentScore = 0;
+        isPlaying = true;
     }
 
 
@@ -66,5 +74,6 @@ public class GameManager : MonoBehaviour
         currentScore += 20;
     }
 
+    
     
 }
